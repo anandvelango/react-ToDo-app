@@ -1,0 +1,118 @@
+form{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  gap: 10px;
+}
+
+.taskBoard{
+  width: 800px;
+  margin: 40px auto;
+  background-color: rgb(45, 45, 45);
+  padding: 1px 20px 20px 20px;
+  border-radius: 15px;
+  box-shadow: 7px 8px 51px 0px rgba(79, 179, 255, 0.08);
+}
+
+.taskList{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  background-color: rgb(31, 31, 31);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#taskStrike{
+  text-decoration: line-through;
+  color: rgb(221, 221, 221)
+}
+
+.taskCol{
+  display: flex;
+  flex-direction: column;
+}
+
+.taskName{
+  font-size: 19px;
+  text-align: left;
+}
+
+.taskDate{
+  text-align: left;
+}
+
+.buttonsGroup{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.taskActions{
+  margin-left: auto; 
+  margin-right: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.deleteButton{
+  color: red;
+}
+
+.editButton{
+  color: white;
+}
+
+input[type=checkbox]{
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.boardTop{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 410px;
+  align-items: center;
+}
+
+.headingCol{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.heading{
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tasksAmount{
+  color: white;
+  text-align: left;
+}
+
+.noTodos{
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: rgb(31, 31, 31);
+  margin: auto;
+  padding: 15px;
+  border-radius: 15px;
+}
