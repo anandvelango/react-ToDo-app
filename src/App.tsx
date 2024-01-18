@@ -1,19 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import AddTask from './AddTask'
 import DisplayTask from './DisplayTask'
+import useLocalStorage from './Hooks/useLocalstorage'
 
 function App() {
   const [task, setTask] = useState("") 
-  const [taskList, setTaskList] = useState(() => {
-    const localTaskList = localStorage.getItem("ITEMS")
-    if (localTaskList === null) return []
-
-    return JSON.parse(localTaskList)
-  })
-  
-  useEffect(() => {
-    localStorage.setItem("ITEMS", JSON.stringify(taskList))
-  }, [taskList])
+  const [taskList, setTaskList] = useLocalStorage("ITEMS", [])
 
   return (
     <>

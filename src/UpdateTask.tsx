@@ -4,9 +4,13 @@ function UpdateTask({showModal, taskName, setShowModal, taskID, setTaskList}: an
     const [newTaskname, setNewTaskName] = useState("")
     
     const updateTask = () => {
+        setNewTaskName(taskName)
         setTaskList((currentTasks: any) => {
             return currentTasks.map((task: any) => {
                 if (task.id === taskID){
+                    if (newTaskname.length === 0){
+                        return {...task, name: taskName}
+                    }
                     return {...task, name: newTaskname}
                 }
 

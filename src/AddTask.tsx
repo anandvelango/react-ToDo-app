@@ -1,6 +1,12 @@
-
+import { useRef, useEffect } from "react"
 
 function AddTask({ task, taskList, setTask, setTaskList }: any){
+
+    const addTaskInput = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        addTaskInput.current?.focus()
+    }, [])
 
     const handleSubmit = (e: any) => {
         if (task !== ""){
@@ -33,7 +39,7 @@ function AddTask({ task, taskList, setTask, setTaskList }: any){
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <input placeholder="Task" className="form-control taskInput" type="text" onChange={(e: any) => setTask(e.target.value)} value={task}/>
+                <input placeholder="Task" className="form-control taskInput" type="text" ref={addTaskInput} onChange={(e: any) => setTask(e.target.value)} value={task}/>
                 <input className="btn btn-primary submitBtn" type="submit"/>
             </form>
         </>
