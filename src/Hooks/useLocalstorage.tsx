@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-function getSavedValue(key: string, initialValue: any){
+function getSavedValue<k extends string, v extends any>(key: k, initialValue: v): v{
     const savedValue = localStorage.getItem(key)
     if (savedValue) return JSON.parse(savedValue)
 

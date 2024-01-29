@@ -1,19 +1,21 @@
 import { useRef, useEffect } from "react"
+import { addtaskProps } from "./types/general.interface"
 
-function AddTask({ task, taskList, setTask, setTaskList }: any){
 
+
+function AddTask({ task, taskList, setTask, setTaskList }: addtaskProps){
     const addTaskInput = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
         addTaskInput.current?.focus()
     }, [])
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent) => {
         if (task !== ""){
             e.preventDefault()
             setTask("")
             const dateTime = time()
-            setTaskList(() : any => {
+            setTaskList(() : {} => {
               return [
                 ...taskList,
                 {id: crypto.randomUUID(), name: task, time: dateTime, completed: false}

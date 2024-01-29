@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import UpdateTask from "./UpdateTask";
+import { displaytaskProps, taskProperties } from "./types/general.interface"
 
-function DisplayTask( {taskList, setTaskList} : any ){
-
+function DisplayTask( {taskList, setTaskList}: displaytaskProps ){
     const [tasksFilter, setTasksFilter] = useState("all")
     const [filteredTasks, setFilteredTasks] = useState([...taskList]);
 
@@ -14,17 +14,17 @@ function DisplayTask( {taskList, setTaskList} : any ){
         filterTaskDisplay()
     }, [tasksFilter, taskList])
 
-    const deleteTasks = (id: any) => {
-        setTaskList((): any => {
-          return taskList.filter((task: any) => task.id !== id)
+    const deleteTasks = (id: string) => {
+        setTaskList((): taskProperties[] => {
+          return taskList.filter((task: taskProperties) => task.id !== id)
         })
     }
     
-    const toggleTask = (id: any, completed: any) => {
-        setTaskList((currentTasks: any) => {
-            return currentTasks.map((task: any) => {
+    const toggleTask = (id: string, completed: boolean) => {
+        setTaskList((currentTasks: taskProperties[]) => {
+            return currentTasks.map((task: taskProperties) => {
                 if (task.id === id){
-                    return {...task, completed}
+                    return {...task, completed: completed}
                 }
             
                 return task
@@ -38,10 +38,10 @@ function DisplayTask( {taskList, setTaskList} : any ){
                 setFilteredTasks([...taskList])
                 break;
             case "pending":
-                setFilteredTasks(taskList.filter((task: any) => !task.completed))
+                setFilteredTasks(taskList.filter((task: taskProperties) => !task.completed))
                 break;
             case "completed":
-                setFilteredTasks(taskList.filter((task: any) => task.completed))
+                setFilteredTasks(taskList.filter((task: taskProperties) => task.completed))
                 break;
             default:
                 setFilteredTasks([...taskList])
@@ -70,9 +70,9 @@ function DisplayTask( {taskList, setTaskList} : any ){
                     </div>
                 </div>
                 <div className="taskList">
-                    {filteredTasks && filteredTasks.map((task: any) => (
+                    {filteredTasks && filteredTasks.map((task: taskProperties) => (
                         <div className="task" key={task.id}>
-                            <input className="form-check-input checkBox" type="checkbox" style={{cursor: "pointer"}} checked={task.completed} onChange={(e: any) => toggleTask(task.id, e.target.checked)}/>
+                            <input className="form-check-input checkBox" type="checkbox" style={{cursor: "pointer"}} checked={task.completed} onChange={(e: React.ChangeEvent<HTMLInputElement>) => toggleTask(task.id, e.target.checked)}/>
                             <div>
                                 <div className="taskName" id={task.completed ? "taskStrike" : ""}>{task.name}</div>   
                                 <div className="taskDate">{task.time}</div>
